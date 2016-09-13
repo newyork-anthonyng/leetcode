@@ -13,6 +13,8 @@ You may assume that both strings contain only lowercase letters.
  * @return {boolean}
  */
 var canConstruct = function(ransomNote, magazine) {
+	if(ransomNote.length > magazine.length) return false;
+
 	for(var i = 0; i < ransomNote.length; i++) {
 		var currentLetter = ransomNote[i];
 		var magIndex = magazine.indexOf(currentLetter);
