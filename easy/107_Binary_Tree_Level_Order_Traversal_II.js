@@ -34,6 +34,7 @@ var levelOrderBottom = function(root) {
 	var stack = []
 	var result = [];
 	var current;
+	var maxLevel = 0;
 
 	if(!root) {
 		return result;
@@ -55,6 +56,8 @@ var levelOrderBottom = function(root) {
 				node: current.node.left, level: current.level + 1
 			});
 		}
+
+		maxLevel = Math.max(maxLevel, current.level + 1);
 	}
 
 	for(var i = 0; i < maxLevel; i++) {
