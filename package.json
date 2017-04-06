@@ -1,0 +1,28 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "This repo holds my solutions to algorithm questions taken from LeetCode.",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^19.0.2",
+    "jest-cli": "^19.0.2"
+  },
+  "devDependencies": {
+    "jest-cli": "^19.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jest": "jest",
+    "watch:test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newyork-anthonyng/leetcode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/newyork-anthonyng/leetcode/issues"
+  },
+  "homepage": "https://github.com/newyork-anthonyng/leetcode#readme"
+}
