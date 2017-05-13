@@ -8,6 +8,7 @@
     "jest-cli": "^19.0.2"
   },
   "devDependencies": {
+    "benchmark": "^2.1.4",
     "jest-cli": "^19.0.2"
   },
   "scripts": {
