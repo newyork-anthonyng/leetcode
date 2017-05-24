@@ -62,3 +62,15 @@ module.exports = {
   islandPerimeter,
   checkSurroundingSquares,
 };
+
+/*
+ * Lessons learned
+ *
+ * MySolution x 215,778 ops/sec ±1.14% (84 runs sampled)
+ * Alternative Solution x 508,093 ops/sec ±2.80% (76 runs sampled)
+ * Fastest is Alternative Solution
+ * 57% faster
+ *
+ * The alternative solution looks at each vertice, and sees if the vertice is a perimter or not.
+ * This solution is 50% faster because we check for less things.
+ */
