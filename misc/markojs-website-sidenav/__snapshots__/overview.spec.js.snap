@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createOverview should create overview when nested overview is selected 1`] = `"<ul><li>Installation</li><li>First</li><li>Second</li><li>Third</li></li></ul><ul><li>Bundler Integration</li><li>Fourth</li><li>Fifth</li><li>Sixth</li><li>Other</li><ul><li>Seventh</li><li>Eighth</li></li></ul></li></ul>"`;
+
+exports[`createOverview should create overview with nested overview (none selected) 1`] = `"<ul><li>Installation</li><li>First</li><li>Second</li><li>Third</li></li></ul><ul><li>Bundler Integration</li><li>Fourth</li><li>Fifth</li><li>Sixth</li><li>Other</li></li></ul>"`;
+
+exports[`createOverview should create simple overview 1`] = `"<ul><li>Installation</li><li>First</li><li>Second</li><li>Third</li></li></ul><ul><li>Bundler Integration</li><li>Fourth</li><li>Fifth</li><li>Sixth</li></li></ul>"`;
+
+exports[`createOverview should include ToC for simple overview when selected 1`] = `"<ul><li>Installation</li><li>First</li><li>Second</li><li><h1>Table of Contents</h1></li><li>Third</li></li></ul><ul><li>Bundler Integration</li><li>Fourth</li><li>Fifth</li><li>Sixth</li></li></ul>"`;
+
+exports[`createParentList should create correct parent list of nested structure 1`] = `
+Object {
+  "Eighth": Object {
+    "Other": true,
+  },
+  "Fifth": Object {
+    "Bundler Integration": true,
+  },
+  "First": Object {
+    "Installation": true,
+  },
+  "Fourth": Object {
+    "Bundler Integration": true,
+  },
+  "Second": Object {
+    "Installation": true,
+  },
+  "Seventh": Object {
+    "Other": true,
+  },
+  "Sixth": Object {
+    "Bundler Integration": true,
+  },
+  "Third": Object {
+    "Installation": true,
+  },
+}
+`;
+
+exports[`createParentList should create correct parent list of simple structure 1`] = `
+Object {
+  "Fifth": Object {
+    "Bundler Integration": true,
+  },
+  "First": Object {
+    "Installation": true,
+  },
+  "Fourth": Object {
+    "Bundler Integration": true,
+  },
+  "Second": Object {
+    "Installation": true,
+  },
+  "Sixth": Object {
+    "Bundler Integration": true,
+  },
+  "Third": Object {
+    "Installation": true,
+  },
+}
+`;
+
+exports[`createParentList should handle deeply nested structures 1`] = `
+Object {
+  "Eighth": Object {
+    "Other": true,
+  },
+  "Fifth": Object {
+    "Bundler Integration": true,
+  },
+  "First": Object {
+    "Installation": true,
+  },
+  "Fourth": Object {
+    "Bundler Integration": true,
+  },
+  "Ninth": Object {
+    "Deeply Nested": true,
+    "Other": true,
+  },
+  "Second": Object {
+    "Installation": true,
+  },
+  "Seventh": Object {
+    "Other": true,
+  },
+  "Sixth": Object {
+    "Bundler Integration": true,
+  },
+  "Tenth": Object {
+    "Deeply Nested": true,
+    "Other": true,
+  },
+  "Third": Object {
+    "Installation": true,
+  },
+}
+`;
+
+exports[`createParentList should handle multiple deeply nested structures 1`] = `
+Object {
+  "Eighth": Object {
+    "Other": true,
+  },
+  "Eleventh": Object {
+    "Another": true,
+  },
+  "Fifth": Object {
+    "Bundler Integration": true,
+  },
+  "First": Object {
+    "Installation": true,
+  },
+  "Fourteenth": Object {
+    "Another": true,
+    "Another Deeply Nested": true,
+  },
+  "Fourth": Object {
+    "Bundler Integration": true,
+  },
+  "Ninth": Object {
+    "Deeply Nested": true,
+    "Other": true,
+  },
+  "Second": Object {
+    "Installation": true,
+  },
+  "Seventh": Object {
+    "Other": true,
+  },
+  "Sixth": Object {
+    "Bundler Integration": true,
+  },
+  "Tenth": Object {
+    "Deeply Nested": true,
+    "Other": true,
+  },
+  "Third": Object {
+    "Installation": true,
+  },
+  "Thirteenth": Object {
+    "Another": true,
+    "Another Deeply Nested": true,
+  },
+  "Twelfth": Object {
+    "Another": true,
+  },
+}
+`;
+
+exports[`createParentList should handle multiple nested structures 1`] = `
+Object {
+  "Eighth": Object {
+    "Other": true,
+  },
+  "Eleventh": Object {
+    "Another": true,
+  },
+  "Fifth": Object {
+    "Bundler Integration": true,
+  },
+  "First": Object {
+    "Installation": true,
+  },
+  "Fourth": Object {
+    "Bundler Integration": true,
+  },
+  "Ninth": Object {
+    "Another": true,
+  },
+  "Second": Object {
+    "Installation": true,
+  },
+  "Seventh": Object {
+    "Other": true,
+  },
+  "Sixth": Object {
+    "Bundler Integration": true,
+  },
+  "Tenth": Object {
+    "Another": true,
+  },
+  "Third": Object {
+    "Installation": true,
+  },
+}
+`;
