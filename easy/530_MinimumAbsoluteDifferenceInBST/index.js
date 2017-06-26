@@ -9,15 +9,15 @@ function TreeNode(val) {
 }
 
 function getMinimumDifference(root) {
-  let previous = null;
+  let previous = undefined;
   let difference = Infinity;
 
   function inOrder(root) {
-    if (!root) return;
+    if (root === null) return;
 
     inOrder(root.left);
 
-    if (previous && (difference > Math.abs(previous - root.val))) {
+    if (previous !== undefined && (difference > Math.abs(previous - root.val))) {
       difference = Math.abs(previous - root.val);
     }
 

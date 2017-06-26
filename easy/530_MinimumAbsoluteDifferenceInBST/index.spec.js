@@ -42,4 +42,18 @@ describe('getMinimumDifference', () => {
 
     expect(getMinimumDifference(root)).toEqual(9);
   });
+
+  it('should work with 0->2236->1277->2776->519', () => {
+    const root = new TreeNode(0);
+    const first = new TreeNode(2236);
+    const second = new TreeNode(1277);
+    const third = new TreeNode(2776);
+    const fourth = new TreeNode(519);
+    root.right = first;
+    first.left = second;
+    first.right = third;
+    second.left = fourth;
+
+    expect(getMinimumDifference(root)).toEqual(519);
+  });
 });
