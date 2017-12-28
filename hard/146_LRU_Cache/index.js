@@ -5,44 +5,113 @@
  * put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
  */
 
+function Node(value) {
+  this.value = value;
+  this.previous = previous;
+  this.next = next;
+}
+
 function LRUCache(size) {
-  let list = [];
+ let currentSize = 0;
+ let root = null;
+ let tail = null;
+ const dictionary = {};
 
-  function get(key) {
-    const indexOfItem = list.findIndex((element) => {
-      return element.key === key;
-    });
-    const foundItem = list[indexOfItem];
+ function removeNodeWithKey(key) {
+   const node = dictionary[key];
+   if (node) {
+     removeNodeFromCurrentPosition(node);
 
-    if (!foundItem) return -1;
+     dictionary[key] = null;
+     return true
+   }
 
-    // remove item from list
-    list = list.slice(0, indexOfItem).concat(list.slice(indexOfItem + 1));
-    list.unshift(foundItem);
+   return false;
+ }
 
-    return foundItem.value;
-  }
+ function removeLastNodeFromList() {
+   if (!tail) return;
 
-  function put(key, value) {
-    const indexOfItem = list.findIndex((element) => element.key === key);
-    if (indexOfItem !== -1) {
-      list = list.slice(0, indexOfItem).concat(list.slice(indexOfItem + 1));
-    }
+   dictionary[tail.value.key] = null;
+   if (tail === root) {
+     root = null;
+     tail = null;
+   } else {
+     removeNodeFromCurrentPosition(tail);
+   }
+ }
 
-    if (list.length >= size) {
-      list = list.slice(0, -1);
-    }
+ function removeNodeFromCurrentPosition(node) {
+   if (node === tail) {
+     tail = node.previous;
+   }
 
-    list.unshift({ key, value });
-  }
+   if (node === root) {
+     root = node.next;
+   }
 
-  return {
-    get,
-    put
-  }
+   const oldNext = node.next;
+   const oldPrevious = node.previous;
+   if (oldNext) oldNext.previous = oldPrevious;
+   if (oldPrevious) oldPrevious.next = oldNext;
+
+   return node;
+ }
+
+ function put(key, value) {
+   const didRemoveDuplicateNode = removeNodeWithKey(key);
+   if (didRemoveDuplicateNode) {
+     currentSize -= 1;
+   }
+
+   if (currentSize >= size) {
+     removeLastNodeFromList();
+     currentSize -= 1;
+   }
+
+   const newNode = new Node({ key, value });
+   const newRoot = insertNodeIntoRoot(newNode);
+   dictionary[key] = newRoot;
+   if (!tail) tail = newRoot;
+   currentSize += 1;
+ }
+
+ function insertNodeIntoRoot(node) {
+   if (!root) {
+     root = node;
+     root.previous = null;
+     root.next = null;
+     return root;
+   }
+
+   root.previous = node;
+   node.next = root;
+   node.previous = null;
+   root = node;
+
+   return node;
+ }
+
+ function get(key) {
+   const currentNode = dictionary[key];
+   if (!currentNode) return -1;
+
+   // move Node to the front of the List
+   if (currentNode !== root) {
+     const updatedNode = removeNodeFromCurrentPosition(currentNode);
+
+     insertNodeIntoRoot(updatedNode);
+   }
+
+   return currentNode.value.value;
+ }
+
+ return {
+   put,
+   get
+ }
 }
 
 module.exports = {
-  LRUCache,
-  Node
+  LRUCache
 }
