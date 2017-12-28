@@ -14,16 +14,10 @@ function Node(value) {
 function LRUCache(size) {
   let currentSize = 0;
   let root = null;
+  let dictionary = {};
 
   function get(key) {
-    let currentNode = root;
-
-    while (currentNode !== null) {
-      if (currentNode.value.key === key) {
-        break;
-      }
-      currentNode = currentNode.next;
-    }
+    const currentNode = dictionary[key] || null;
 
     if (currentNode === null) return -1;
 
@@ -46,12 +40,7 @@ function LRUCache(size) {
   }
 
   function removeFirstNodeWithKey(key) {
-    let currentNode = root;
-    while (currentNode !== null) {
-      if (currentNode.value.key === key) break;
-
-      currentNode = currentNode.next;
-    }
+    const currentNode = dictionary[key] || null;
 
     if (currentNode !== null) {
       const oldPrevious = currentNode.previous;
@@ -82,6 +71,8 @@ function LRUCache(size) {
           currentNode.previous.next = null;
         }
       }
+
+      dictionary[currentNode.value.key] = undefined;
     }
   }
 
@@ -103,6 +94,7 @@ function LRUCache(size) {
     root = newNode;
 
     currentSize += 1;
+    dictionary[key] = newNode;
   }
 
   return {
