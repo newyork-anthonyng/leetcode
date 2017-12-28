@@ -84,7 +84,18 @@ it("should work 3", () => {
   expect(cache.get(2)).toEqual(6);
 });
 
-fit("should work 4", () => {
+
+it("should work 5", () => {
+  const cache = new LRUCache(2);
+  cache.put(2, 1);
+  cache.put(1, 1);
+  cache.put(2, 3);
+  cache.put(4, 1);
+  expect(cache.get(1)).toEqual(-1);
+  expect(cache.get(2)).toEqual(3);
+});
+
+it("should work 4", () => {
   const action = [
     "LRUCache",
     "put",
@@ -115,37 +126,6 @@ fit("should work 4", () => {
     "put",
     "put",
     "get",
-    "put",
-    "get",
-    "put",
-    "get",
-    "get",
-    "get",
-    "put",
-    "put",
-    "put",
-    "get",
-    "put",
-    "get",
-    "get",
-    "put",
-    "put",
-    "get",
-    "put",
-    "put",
-    "put",
-    "put",
-    "get",
-    "put",
-    "put",
-    "get",
-    "put",
-    "put",
-    "get",
-    "put",
-    "put",
-    "put",
-    "put",
     "put",
     "get"
   ];
@@ -180,38 +160,7 @@ fit("should work 4", () => {
     [3, 1],
     [3],
     [10, 11],
-    [8],
-    [2, 14],
-    [1],
-    [5],
-    [4],
-    [11, 4],
-    [12, 24],
-    [5, 18],
-    [13],
-    [7, 23],
-    [8],
-    [12],
-    [3, 27],
-    [2, 12],
-    [5],
-    [2, 9],
-    [13, 4],
-    [8, 18],
-    [1, 7],
-    [6],
-    [9, 29],
-    [8, 21],
-    [5],
-    [6, 30],
-    [1, 12],
-    [10],
-    [4, 15],
-    [7, 22],
-    [11, 26],
-    [8, 17],
-    [9, 29],
-    [5]
+    [8]
   ];
   const expected = [
     null,
@@ -244,38 +193,7 @@ fit("should work 4", () => {
     null,
     1,
     null,
-    -1,
-    null,
-    30,
-    5,
-    30,
-    null,
-    null,
-    null,
-    -1,
-    null,
-    -1,
-    24,
-    null,
-    null,
-    18,
-    null,
-    null,
-    null,
-    null,
-    -1,
-    null,
-    null,
-    18,
-    null,
-    null,
-    -1,
-    null,
-    null,
-    null,
-    null,
-    null,
-    18,
+    -1
   ];
 
   const cache = new LRUCache(inputs[0][0]);
@@ -283,7 +201,7 @@ fit("should work 4", () => {
     const currentAction = action[i];
     const currentInputs = inputs[i];
     const expectedResult = expected[i];
-
+    console.log(i);
     const result = cache[currentAction].apply(null, currentInputs);
     if (currentAction === "get") {
       expect(result).toEqual(expectedResult);
